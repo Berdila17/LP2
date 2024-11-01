@@ -16,7 +16,7 @@
 - [x] Benutzerführung(Menüstruktur das Benutzer zeigt was er für Funktionen zur  Auswahl hat
       
 
-✍️ Heute habe ich alles was ich machen wollte erledigt also wie ich die Daten speichere geplant dann hab ich eine Funktion erstellt wo man ein Schüler hinzufügen kann und die Menüstruktur gemacht da gibnt es noch Optionen wo ich die Funktion hinzufügen habe.
+✍️ Heute habe ich alles was ich machen wollte erledigt also wie ich die Daten speichere geplant dann hab ich eine Funktion erstellt wo man ein Schüler hinzufügen kann und die Menüstruktur gemacht da gibt es noch Optionen wo ich die Funktion hinzufügen muss aber noch nicht angefangen habe.
 
 ☝️ Vergessen Sie nicht, bis einen ersten Code auf github hochzuladen
 
