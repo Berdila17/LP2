@@ -4,23 +4,17 @@
 
 ## Grob-Planung
 
-1. Wo stehen Sie mit Ihren Noten? In welchen Modulen waren Sie besonders stark; in welchen sind die ungenügend? Welche davon sind besonders wichtig?
-4. Was wäre ein geeignetes Projekt für diese LP2?
+1. Wir haben noch keine Noten erhalten
+4. Ich würde ein Notenverwaltungssystem machen und arbeite mit Listen und Arrays
 
-## 25.10.2024
-
-- [ ] ...
-- [ ] ...
-
-✍️ Heute habe ich... (50-100 Wörter)
-
-☝️ Vergessen Sie nicht, bis einen ersten Code auf github hochzuladen
 
 ## 1.11.2024
 
-- [ ] Erstes Arbeitspaket
-- [ ] ...
-- [ ] Viertes AP
+- [ ] Projekt einrichten
+- [ ] Datenstruktur planen(wie ich die Daten speichere etc.)
+- [ ] Funktion erstellen wo man ein Schüler hinzufügen kann
+- [ ] Benutzerführung(Menüstruktur das Benutzer zeigt was er für Funktionen zur  Auswahl hat
+      
 
 ✍️ Heute habe ich... (50-100 Wörter)
 
