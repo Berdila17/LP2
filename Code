@@ -1,0 +1,226 @@
+using System;
+using System.Collections.Generic;
+
+namespace Notenverwaltung
+{
+
+    public class Fach
+    {
+        public string Name { get; set; }
+        public List<int> Noten { get; set; } = new List<int>();
+
+    }
+
+    public class Schüler
+    {
+        public string Name { get; set; }
+        public string Klasse { get; set; }
+        public List<Fach> Fächer { get; set; } = new List<Fach>();
+
+    }
+
+
+    class Program
+    {
+        static List<Schüler> schülerListe = new List<Schüler>();
+        static void Main(string[] args)
+        {
+            bool laufend = true;
+            while (laufend)
+            {
+
+                Console.WriteLine("----- Notenverwaltungssystem -----");
+                Console.WriteLine("1. Schüler hinzufügen");
+                Console.WriteLine("2. Noten hinzufügen");
+                Console.WriteLine("3. Noten anzeigen");
+                Console.WriteLine("4. Beenden");
+                Console.Write("Option auswählen: ");
+
+
+                string auswahl = Console.ReadLine();
+                
+                switch (auswahl)
+                {
+
+                    case "1":
+                        SchülerHinzufügen();
+                        break;
+                        case "4":
+                        laufend = false;
+                        Console.WriteLine("Programm beendet.");
+                        break;
+                    default:
+                        Console.WriteLine("Ungültige Auswahl. Bitte erneut versuchen.");
+                        break;
+
+
+
+
+
+
+
+
+
+
+
+
+
+                }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        }
+
+
+
+        static void SchülerHinzufügen()
+        {
+            Console.Write("Geben Sie den Namen des Schülers ein: ");
+            string name = Console.ReadLine();
+            Console.Write("Geben Sie die Klasse des Schülers ein: ");
+            string klasse = Console.ReadLine();
+
+            Schüler neuerSchüler = new Schüler
+            {
+                Name = name,
+                Klasse = klasse
+            };
+
+            schülerListe.Add(neuerSchüler);
+            Console.WriteLine("Schüler erfolgreich hinzugefügt.");
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
