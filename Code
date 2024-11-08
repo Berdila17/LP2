@@ -1,14 +1,13 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Notenverwaltung
 {
-
     public class Fach
     {
         public string Name { get; set; }
         public List<int> Noten { get; set; } = new List<int>();
-
     }
 
     public class Schüler
@@ -17,100 +16,104 @@ namespace Notenverwaltung
         public string Klasse { get; set; }
         public List<Fach> Fächer { get; set; } = new List<Fach>();
 
-    }
+        public void FachHinzufügen(string fachName)
+        {
+            if (Fächer.Any(f => f.Name == fachName))
+            {
+                Console.WriteLine("Dieses Fach existiert bereits für den Schüler.");
+            }
+            else
+            {
+                Fächer.Add(new Fach { Name = fachName });
+                Console.WriteLine($"Fach '{fachName}' wurde erfolgreich hinzugefügt.");
+            }
+        }
 
+        public void NoteHinzufügen(string fachName, int note)
+        {
+            Fach fach = Fächer.FirstOrDefault(f => f.Name == fachName);
+            if (fach != null)
+            {
+                if (note >= 1 && note <= 6)
+                {
+                    fach.Noten.Add(note);
+                    Console.WriteLine($"Note {note} wurde zu '{fachName}' hinzugefügt.");
+                }
+                else
+                {
+                    Console.WriteLine("Die Note muss zwischen 1 und 6 liegen.");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Das Fach existiert nicht. Bitte zuerst das Fach hinzufügen.");
+            }
+        }
+
+        public void NotenAnzeigen(string fachName)
+        {
+            Fach fach = Fächer.FirstOrDefault(f => f.Name == fachName);
+            if (fach != null)
+            {
+                if (fach.Noten.Count > 0)
+                {
+                    Console.WriteLine($"Noten in '{fachName}': {string.Join(", ", fach.Noten)}");
+                }
+                else
+                {
+                    Console.WriteLine($"Keine Noten in '{fachName}' verfügbar.");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Das Fach existiert nicht.");
+            }
+        }
+    }
 
     class Program
     {
         static List<Schüler> schülerListe = new List<Schüler>();
+
         static void Main(string[] args)
         {
             bool laufend = true;
             while (laufend)
             {
-
                 Console.WriteLine("----- Notenverwaltungssystem -----");
                 Console.WriteLine("1. Schüler hinzufügen");
-                Console.WriteLine("2. Noten hinzufügen");
-                Console.WriteLine("3. Noten anzeigen");
-                Console.WriteLine("4. Beenden");
+                Console.WriteLine("2. Fach hinzufügen");
+                Console.WriteLine("3. Note hinzufügen");
+                Console.WriteLine("4. Noten anzeigen");
+                Console.WriteLine("5. Beenden");
                 Console.Write("Option auswählen: ");
 
-
                 string auswahl = Console.ReadLine();
-                
+
                 switch (auswahl)
                 {
-
                     case "1":
                         SchülerHinzufügen();
                         break;
-                        case "4":
+                    case "2":
+                        FachHinzufügen();
+                        break;
+                    case "3":
+                        NoteHinzufügen();
+                        break;
+                    case "4":
+                        NotenAnzeigen();
+                        break;
+                    case "5":
                         laufend = false;
                         Console.WriteLine("Programm beendet.");
                         break;
                     default:
                         Console.WriteLine("Ungültige Auswahl. Bitte erneut versuchen.");
                         break;
-
-
-
-
-
-
-
-
-
-
-
-
-
                 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
             }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         }
-
-
 
         static void SchülerHinzufügen()
         {
@@ -129,98 +132,71 @@ namespace Notenverwaltung
             Console.WriteLine("Schüler erfolgreich hinzugefügt.");
         }
 
+        static Schüler SchülerSuchen(string name)
+        {
+            return schülerListe.FirstOrDefault(s => s.Name == name);
+        }
 
+        static void FachHinzufügen()
+        {
+            Console.Write("Geben Sie den Namen des Schülers ein: ");
+            string name = Console.ReadLine();
+            Schüler schüler = SchülerSuchen(name);
 
+            if (schüler != null)
+            {
+                Console.Write("Geben Sie den Namen des Faches ein: ");
+                string fachName = Console.ReadLine();
+                schüler.FachHinzufügen(fachName);
+            }
+            else
+            {
+                Console.WriteLine("Schüler nicht gefunden.");
+            }
+        }
 
+        static void NoteHinzufügen()
+        {
+            Console.Write("Geben Sie den Namen des Schülers ein: ");
+            string name = Console.ReadLine();
+            Schüler schüler = SchülerSuchen(name);
 
+            if (schüler != null)
+            {
+                Console.Write("Geben Sie den Namen des Faches ein: ");
+                string fachName = Console.ReadLine();
+                Console.Write("Geben Sie die Note ein (1-6): ");
+                if (int.TryParse(Console.ReadLine(), out int note))
+                {
+                    schüler.NoteHinzufügen(fachName, note);
+                }
+                else
+                {
+                    Console.WriteLine("Ungültige Eingabe. Bitte geben Sie eine Zahl zwischen 1 und 6 ein.");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Schüler nicht gefunden.");
+            }
+        }
 
+        static void NotenAnzeigen()
+        {
+            Console.Write("Geben Sie den Namen des Schülers ein: ");
+            string name = Console.ReadLine();
+            Schüler schüler = SchülerSuchen(name);
 
-
-
-
-
-
-
-
-
-
-
-
+            if (schüler != null)
+            {
+                Console.Write("Geben Sie den Namen des Faches ein: ");
+                string fachName = Console.ReadLine();
+                schüler.NotenAnzeigen(fachName);
+            }
+            else
+            {
+                Console.WriteLine("Schüler nicht gefunden.");
+            }
+        }
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
