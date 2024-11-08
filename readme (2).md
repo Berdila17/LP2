@@ -22,7 +22,17 @@
 
 ## 8.11.2024
 
-- [ ] Funktion um Fächer zu hinzufügen
-- [ ] Funktion um Noten zu hinzufügen
-- [ ] Funktion  die für einen Schüler alle bestimmte Noten in einem Fach zeigt
-- [ ] Ausnahmebehandlung implentieren                                                  
+- [x] Funktion um Fächer zu hinzufügen
+- [x] Funktion um Noten zu hinzufügen
+- [x] Funktion  die für einen Schüler alle bestimmte Noten in einem Fach zeigt
+- [x] Ausnahmebehandlung implentieren                                                  
+
+✍️ Heute habe ich an den Code gearbeitet aber heute war es ein bisschen speziell da wir Online Unterricht hatten. Bei bestimmten Sachen hatte ich Hilfe von meinem Cousin bekommen da er Informatik studiert hat und bei mir es kurz ein bisschen gebraucht hat um zu schauen wie ich jetzt vorgehe.Ich muss sagen das dieser Code viel komplexer als der Taschenrechner bis jetzt ist aber das ist auch gut wenn ich jmich steigere und versuche schwere Sachen zu machen.(Mein Cousin hat mir bei Arbeitspaket 2 und 3 geholfen) Die Ausnahmebehandlung hab ich angefangen aber es ist nicht so wie ich es will
+
+## 15.11.2024
+
+- [ ] Ausnahmebehandlung implentieren oder halt besser machen.
+- [ ] Notendurchschnitt berechnen  aus einem Fach
+- [ ] Gesamtnotendurchschnitt aus mehreren Fächer
+- [ ] Klassenbester ermitteln aus einer Klasse
+  
