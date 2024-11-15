@@ -31,8 +31,16 @@
 
 ## 15.11.2024
 
-- [ ] Ausnahmebehandlung implentieren oder halt besser machen.
-- [ ] Notendurchschnitt berechnen  aus einem Fach
-- [ ] Gesamtnotendurchschnitt aus mehreren Fächer
+- [x] Ausnahmebehandlung implentieren oder halt besser machen.
+- [x] Notendurchschnitt berechnen  aus einem Fach
+- [x] Gesamtnotendurchschnitt aus mehreren Fächer
 - [ ] Klassenbester ermitteln aus einer Klasse
-  
+
+  ✍️ Heute habe ich die Ausnahmebehandlung verbessert und die beiden FUnktionen mit dem Notendurchschnitt eines Fach zu rechnen und den Gesamtdurchschnitt von mwehreren Fächern. Ich merke es wird schwerer und schwerer und kann nicht einfach 4 Arbeitspakete erledigen aber ich werde besser werden!Heute hab ich es mehr oder weniger allein gemacht mit was ich hilfe hatte war wie ich die Ausnahmebehandlung verbessern kann das hab ich ChatGBT gefragt und gefragt wie er darauf kommt,wieso und etc.
+
+## 22.11.2024
+
+- [ ] Klassenbester ermitteln aus einer Klasse
+- [ ] Funktion schlechtester Schüler finden
+- [ ] Daten speichern Funktion
+- [ ] gespeicherte Daten zu laden Funktion
