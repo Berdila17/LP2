@@ -8,6 +8,12 @@ namespace Notenverwaltung
     {
         public string Name { get; set; }
         public List<int> Noten { get; set; } = new List<int>();
+
+        public double Durchschnittsnote()
+        {
+            // Berechnet den Durchschnitt der Noten, falls vorhanden
+            return Noten.Count > 0 ? Noten.Average() : 0.0;
+        }
     }
 
     public class Schüler
@@ -31,42 +37,96 @@ namespace Notenverwaltung
 
         public void NoteHinzufügen(string fachName, int note)
         {
-            Fach fach = Fächer.FirstOrDefault(f => f.Name == fachName);
-            if (fach != null)
+            try
             {
-                if (note >= 1 && note <= 6)
+                Fach fach = Fächer.FirstOrDefault(f => f.Name == fachName);
+                if (fach != null)
                 {
-                    fach.Noten.Add(note);
-                    Console.WriteLine($"Note {note} wurde zu '{fachName}' hinzugefügt.");
+                    if (note >= 1 && note <= 6)
+                    {
+                        fach.Noten.Add(note);
+                        Console.WriteLine($"Note {note} wurde zu '{fachName}' hinzugefügt.");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Die Note muss zwischen 1 und 6 liegen.");
+                    }
                 }
                 else
                 {
-                    Console.WriteLine("Die Note muss zwischen 1 und 6 liegen.");
+                    Console.WriteLine("Das Fach existiert nicht. Bitte zuerst das Fach hinzufügen.");
                 }
             }
-            else
+            catch (Exception ex)
             {
-                Console.WriteLine("Das Fach existiert nicht. Bitte zuerst das Fach hinzufügen.");
+                Console.WriteLine("Fehler beim Hinzufügen der Note: " + ex.Message);
             }
         }
 
         public void NotenAnzeigen(string fachName)
         {
-            Fach fach = Fächer.FirstOrDefault(f => f.Name == fachName);
-            if (fach != null)
+            try
             {
-                if (fach.Noten.Count > 0)
+                Fach fach = Fächer.FirstOrDefault(f => f.Name == fachName);
+                if (fach != null)
                 {
-                    Console.WriteLine($"Noten in '{fachName}': {string.Join(", ", fach.Noten)}");
+                    if (fach.Noten.Count > 0)
+                    {
+                        Console.WriteLine($"Noten in '{fachName}': {string.Join(", ", fach.Noten)}");
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Keine Noten in '{fachName}' verfügbar.");
+                    }
                 }
                 else
                 {
-                    Console.WriteLine($"Keine Noten in '{fachName}' verfügbar.");
+                    Console.WriteLine("Das Fach existiert nicht.");
                 }
             }
-            else
+            catch (Exception ex)
             {
-                Console.WriteLine("Das Fach existiert nicht.");
+                Console.WriteLine("Fehler beim Anzeigen der Noten: " + ex.Message);
+            }
+        }
+
+        public void DurchschnittsnoteAnzeigen(string fachName)
+        {
+            try
+            {
+                Fach fach = Fächer.FirstOrDefault(f => f.Name == fachName);
+                if (fach != null)
+                {
+                    double durchschnitt = fach.Durchschnittsnote();
+                    Console.WriteLine($"Durchschnittsnote in '{fachName}': {durchschnitt:0.00}");
+                }
+                else
+                {
+                    Console.WriteLine("Das Fach existiert nicht.");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Fehler beim Berechnen der Durchschnittsnote: " + ex.Message);
+            }
+        }
+
+        public double Gesamtdurchschnitt()
+        {
+            var alleNoten = Fächer.SelectMany(f => f.Noten).ToList();
+            return alleNoten.Count > 0 ? alleNoten.Average() : 0.0;
+        }
+
+        public void GesamtdurchschnittAnzeigen()
+        {
+            try
+            {
+                double gesamtdurchschnitt = Gesamtdurchschnitt();
+                Console.WriteLine($"Gesamtnotenschnitt für alle Fächer: {gesamtdurchschnitt:0.00}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Fehler beim Berechnen des Gesamtdurchschnitts: " + ex.Message);
             }
         }
     }
@@ -85,7 +145,9 @@ namespace Notenverwaltung
                 Console.WriteLine("2. Fach hinzufügen");
                 Console.WriteLine("3. Note hinzufügen");
                 Console.WriteLine("4. Noten anzeigen");
-                Console.WriteLine("5. Beenden");
+                Console.WriteLine("5. Durchschnittsnote anzeigen");
+                Console.WriteLine("6. Gesamtnotenschnitt anzeigen");
+                Console.WriteLine("7. Beenden");
                 Console.Write("Option auswählen: ");
 
                 string auswahl = Console.ReadLine();
@@ -105,6 +167,12 @@ namespace Notenverwaltung
                         NotenAnzeigen();
                         break;
                     case "5":
+                        DurchschnittsnoteAnzeigen();
+                        break;
+                    case "6":
+                        GesamtdurchschnittAnzeigen();
+                        break;
+                    case "7":
                         laufend = false;
                         Console.WriteLine("Programm beendet.");
                         break;
@@ -117,19 +185,26 @@ namespace Notenverwaltung
 
         static void SchülerHinzufügen()
         {
-            Console.Write("Geben Sie den Namen des Schülers ein: ");
-            string name = Console.ReadLine();
-            Console.Write("Geben Sie die Klasse des Schülers ein: ");
-            string klasse = Console.ReadLine();
-
-            Schüler neuerSchüler = new Schüler
+            try
             {
-                Name = name,
-                Klasse = klasse
-            };
+                Console.Write("Geben Sie den Namen des Schülers ein: ");
+                string name = Console.ReadLine();
+                Console.Write("Geben Sie die Klasse des Schülers ein: ");
+                string klasse = Console.ReadLine();
 
-            schülerListe.Add(neuerSchüler);
-            Console.WriteLine("Schüler erfolgreich hinzugefügt.");
+                Schüler neuerSchüler = new Schüler
+                {
+                    Name = name,
+                    Klasse = klasse
+                };
+
+                schülerListe.Add(neuerSchüler);
+                Console.WriteLine("Schüler erfolgreich hinzugefügt.");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Fehler beim Hinzufügen des Schülers: " + ex.Message);
+            }
         }
 
         static Schüler SchülerSuchen(string name)
@@ -198,5 +273,40 @@ namespace Notenverwaltung
                 Console.WriteLine("Schüler nicht gefunden.");
             }
         }
+
+        static void DurchschnittsnoteAnzeigen()
+        {
+            Console.Write("Geben Sie den Namen des Schülers ein: ");
+            string name = Console.ReadLine();
+            Schüler schüler = SchülerSuchen(name);
+
+            if (schüler != null)
+            {
+                Console.Write("Geben Sie den Namen des Faches ein: ");
+                string fachName = Console.ReadLine();
+                schüler.DurchschnittsnoteAnzeigen(fachName);
+            }
+            else
+            {
+                Console.WriteLine("Schüler nicht gefunden.");
+            }
+        }
+
+        static void GesamtdurchschnittAnzeigen()
+        {
+            Console.Write("Geben Sie den Namen des Schülers ein: ");
+            string name = Console.ReadLine();
+            Schüler schüler = SchülerSuchen(name);
+
+            if (schüler != null)
+            {
+                schüler.GesamtdurchschnittAnzeigen();
+            }
+            else
+            {
+                Console.WriteLine("Schüler nicht gefunden.");
+            }
+        }
     }
 }
+
