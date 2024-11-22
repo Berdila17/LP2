@@ -44,3 +44,12 @@
 - [ ] Funktion schlechtester Schüler finden
 - [ ] Daten speichern Funktion
 - [ ] gespeicherte Daten zu laden Funktion
+
+Heute habe ich mit den Mini Projekt von Daten zu speichern und dann wieder zu laden Übung angefangen ich habe zwar noch nicht etwas zu programmieren angefangen aber dafür mit der Theorie davon auseinander gesetzt. Sobald ich dies fertig habe werd ich anfangen die anderen Sachen zu den Projekt weiterzumachen. Ich habe zwar mit dem Klassenbester zu ermitteln angefangen aber habe danach alles wieder gelöscht.
+
+## 29.11.2024
+
+- [ ] Daten abzuspeichern im Mini Projekt
+- [ ] Daten laden und wieder abrufen könne im Mini Projekt
+- [ ] Daten  abzuspeichern und zu laden im Projekt umsetzen
+- [ ] Klassenbester und Klassen schlechtester ermitteln
