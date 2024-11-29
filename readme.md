@@ -53,3 +53,11 @@ Heute habe ich mit den Mini Projekt von Daten zu speichern und dann wieder zu la
 - [ ] Daten laden und wieder abrufen könne im Mini Projekt
 - [ ] Daten  abzuspeichern und zu laden im Projekt umsetzen
 - [ ] Klassenbester und Klassen schlechtester ermitteln
+
+      Heute hab ich mich mit den anderen Sachen beschäftigt da mir das Mini Projekt nicht gelungen ist und ich ein bisschen aggressiv deswegen wurde habe ich leider aufgegebn aber ich hab mein Code auf Englisch übersetzt und die Klassenbester und Klassen schlechtester Funktion hinzugefügt. Jetzt ist der ganze Code auf englisch von dern Eingabe bis zu der Ausgabe.
+
+- [ ] System.Linq in ein Mini Projekt besser kennenlernen
+- [ ] Daten speichern Funktion implentieren ( da brauche ich Hilfe)
+- [ ] Daten laden Funktion implentieren (brauch ich auch Hilfe)
+- [ ] Etwas automatisch speichern Funktion (geht nur wenn die oberen 2 funktionieren)
+Könnten sie vielleicht mir ein Video zu den Daten schicken weil ich konnte kaum einer finden der mir Hilft leider.
