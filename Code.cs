@@ -2,311 +2,351 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Notenverwaltung
+namespace GradeManagement
 {
-    public class Fach
+    public class Subject
     {
         public string Name { get; set; }
-        public List<int> Noten { get; set; } = new List<int>();
+        public List<int> Grades { get; set; } = new List<int>();
 
-        public double Durchschnittsnote()
+        public double AverageGrade()
         {
-            // Berechnet den Durchschnitt der Noten, falls vorhanden
-            return Noten.Count > 0 ? Noten.Average() : 0.0;
+            return Grades.Count > 0 ? Grades.Average() : 0.0;
         }
     }
 
-    public class Schüler
+    public class Student
     {
         public string Name { get; set; }
-        public string Klasse { get; set; }
-        public List<Fach> Fächer { get; set; } = new List<Fach>();
+        public string ClassName { get; set; }
+        public List<Subject> Subjects { get; set; } = new List<Subject>();
 
-        public void FachHinzufügen(string fachName)
+        public void AddSubject(string subjectName)
         {
-            if (Fächer.Any(f => f.Name == fachName))
+            if (Subjects.Any(s => s.Name == subjectName))
             {
-                Console.WriteLine("Dieses Fach existiert bereits für den Schüler.");
+                Console.WriteLine("This subject already exists for the student.");
             }
             else
             {
-                Fächer.Add(new Fach { Name = fachName });
-                Console.WriteLine($"Fach '{fachName}' wurde erfolgreich hinzugefügt.");
+                Subjects.Add(new Subject { Name = subjectName });
+                Console.WriteLine($"Subject '{subjectName}' has been successfully added.");
             }
         }
 
-        public void NoteHinzufügen(string fachName, int note)
+        public void AddGrade(string subjectName, int grade)
         {
             try
             {
-                Fach fach = Fächer.FirstOrDefault(f => f.Name == fachName);
-                if (fach != null)
+                Subject subject = Subjects.FirstOrDefault(s => s.Name == subjectName);
+                if (subject != null)
                 {
-                    if (note >= 1 && note <= 6)
+                    if (grade >= 1 && grade <= 6)
                     {
-                        fach.Noten.Add(note);
-                        Console.WriteLine($"Note {note} wurde zu '{fachName}' hinzugefügt.");
+                        subject.Grades.Add(grade);
+                        Console.WriteLine($"Grade {grade} added to '{subjectName}'.");
                     }
                     else
                     {
-                        Console.WriteLine("Die Note muss zwischen 1 und 6 liegen.");
+                        Console.WriteLine("The grade must be between 1 and 6.");
                     }
                 }
                 else
                 {
-                    Console.WriteLine("Das Fach existiert nicht. Bitte zuerst das Fach hinzufügen.");
+                    Console.WriteLine("The subject does not exist. Please add the subject first.");
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Fehler beim Hinzufügen der Note: " + ex.Message);
+                Console.WriteLine("Error adding the grade: " + ex.Message);
             }
         }
 
-        public void NotenAnzeigen(string fachName)
+        public void DisplayGrades(string subjectName)
         {
             try
             {
-                Fach fach = Fächer.FirstOrDefault(f => f.Name == fachName);
-                if (fach != null)
+                Subject subject = Subjects.FirstOrDefault(s => s.Name == subjectName);
+                if (subject != null)
                 {
-                    if (fach.Noten.Count > 0)
+                    if (subject.Grades.Count > 0)
                     {
-                        Console.WriteLine($"Noten in '{fachName}': {string.Join(", ", fach.Noten)}");
+                        Console.WriteLine($"Grades in '{subjectName}': {string.Join(", ", subject.Grades)}");
                     }
                     else
                     {
-                        Console.WriteLine($"Keine Noten in '{fachName}' verfügbar.");
+                        Console.WriteLine($"No grades available in '{subjectName}'.");
                     }
                 }
                 else
                 {
-                    Console.WriteLine("Das Fach existiert nicht.");
+                    Console.WriteLine("The subject does not exist.");
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Fehler beim Anzeigen der Noten: " + ex.Message);
+                Console.WriteLine("Error displaying grades: " + ex.Message);
             }
         }
 
-        public void DurchschnittsnoteAnzeigen(string fachName)
+        public void DisplayAverageGrade(string subjectName)
         {
             try
             {
-                Fach fach = Fächer.FirstOrDefault(f => f.Name == fachName);
-                if (fach != null)
+                Subject subject = Subjects.FirstOrDefault(s => s.Name == subjectName);
+                if (subject != null)
                 {
-                    double durchschnitt = fach.Durchschnittsnote();
-                    Console.WriteLine($"Durchschnittsnote in '{fachName}': {durchschnitt:0.00}");
+                    double average = subject.AverageGrade();
+                    Console.WriteLine($"Average grade in '{subjectName}': {average:0.00}");
                 }
                 else
                 {
-                    Console.WriteLine("Das Fach existiert nicht.");
+                    Console.WriteLine("The subject does not exist.");
                 }
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Fehler beim Berechnen der Durchschnittsnote: " + ex.Message);
+                Console.WriteLine("Error calculating the average grade: " + ex.Message);
             }
         }
 
-        public double Gesamtdurchschnitt()
+        public double OverallAverage()
         {
-            var alleNoten = Fächer.SelectMany(f => f.Noten).ToList();
-            return alleNoten.Count > 0 ? alleNoten.Average() : 0.0;
+            var allGrades = Subjects.SelectMany(s => s.Grades).ToList();
+            return allGrades.Count > 0 ? allGrades.Average() : 0.0;
         }
 
-        public void GesamtdurchschnittAnzeigen()
+        public void DisplayOverallAverage()
         {
             try
             {
-                double gesamtdurchschnitt = Gesamtdurchschnitt();
-                Console.WriteLine($"Gesamtnotenschnitt für alle Fächer: {gesamtdurchschnitt:0.00}");
+                double overallAverage = OverallAverage();
+                Console.WriteLine($"Overall average grade for all subjects: {overallAverage:0.00}");
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Fehler beim Berechnen des Gesamtdurchschnitts: " + ex.Message);
+                Console.WriteLine("Error calculating the overall average: " + ex.Message);
             }
         }
     }
 
     class Program
     {
-        static List<Schüler> schülerListe = new List<Schüler>();
+        static List<Student> studentList = new List<Student>();
 
         static void Main(string[] args)
         {
-            bool laufend = true;
-            while (laufend)
+            bool running = true;
+            while (running)
             {
-                Console.WriteLine("----- Notenverwaltungssystem -----");
-                Console.WriteLine("1. Schüler hinzufügen");
-                Console.WriteLine("2. Fach hinzufügen");
-                Console.WriteLine("3. Note hinzufügen");
-                Console.WriteLine("4. Noten anzeigen");
-                Console.WriteLine("5. Durchschnittsnote anzeigen");
-                Console.WriteLine("6. Gesamtnotenschnitt anzeigen");
-                Console.WriteLine("7. Beenden");
-                Console.Write("Option auswählen: ");
+                Console.WriteLine("----- Grade Management System -----");
+                Console.WriteLine("1. Add Student");
+                Console.WriteLine("2. Add Subject");
+                Console.WriteLine("3. Add Grade");
+                Console.WriteLine("4. Display Grades");
+                Console.WriteLine("5. Display Average Grade");
+                Console.WriteLine("6. Display Overall Average");
+                Console.WriteLine("7. Display Best Student in Class");
+                Console.WriteLine("8. Display Worst Student in Class");
+                Console.WriteLine("9. Exit");
+                Console.Write("Select an option: ");
 
-                string auswahl = Console.ReadLine();
+                string choice = Console.ReadLine();
 
-                switch (auswahl)
+                switch (choice)
                 {
                     case "1":
-                        SchülerHinzufügen();
+                        AddStudent();
                         break;
                     case "2":
-                        FachHinzufügen();
+                        AddSubject();
                         break;
                     case "3":
-                        NoteHinzufügen();
+                        AddGrade();
                         break;
                     case "4":
-                        NotenAnzeigen();
+                        DisplayGrades();
                         break;
                     case "5":
-                        DurchschnittsnoteAnzeigen();
+                        DisplayAverageGrade();
                         break;
                     case "6":
-                        GesamtdurchschnittAnzeigen();
+                        DisplayOverallAverage();
                         break;
                     case "7":
-                        laufend = false;
-                        Console.WriteLine("Programm beendet.");
+                        DisplayBestStudentInClass();
+                        break;
+                    case "8":
+                        DisplayWorstStudentInClass();
+                        break;
+                    case "9":
+                        running = false;
+                        Console.WriteLine("Program terminated.");
                         break;
                     default:
-                        Console.WriteLine("Ungültige Auswahl. Bitte erneut versuchen.");
+                        Console.WriteLine("Invalid choice. Please try again.");
                         break;
                 }
             }
         }
 
-        static void SchülerHinzufügen()
+        static void AddStudent()
         {
             try
             {
-                Console.Write("Geben Sie den Namen des Schülers ein: ");
+                Console.Write("Enter the student's name: ");
                 string name = Console.ReadLine();
-                Console.Write("Geben Sie die Klasse des Schülers ein: ");
-                string klasse = Console.ReadLine();
+                Console.Write("Enter the student's class: ");
+                string className = Console.ReadLine();
 
-                Schüler neuerSchüler = new Schüler
+                Student newStudent = new Student
                 {
                     Name = name,
-                    Klasse = klasse
+                    ClassName = className
                 };
 
-                schülerListe.Add(neuerSchüler);
-                Console.WriteLine("Schüler erfolgreich hinzugefügt.");
+                studentList.Add(newStudent);
+                Console.WriteLine("Student successfully added.");
             }
             catch (Exception ex)
             {
-                Console.WriteLine("Fehler beim Hinzufügen des Schülers: " + ex.Message);
+                Console.WriteLine("Error adding student: " + ex.Message);
             }
         }
 
-        static Schüler SchülerSuchen(string name)
+        static Student FindStudent(string name)
         {
-            return schülerListe.FirstOrDefault(s => s.Name == name);
+            return studentList.FirstOrDefault(s => s.Name == name);
         }
 
-        static void FachHinzufügen()
+        static void AddSubject()
         {
-            Console.Write("Geben Sie den Namen des Schülers ein: ");
+            Console.Write("Enter the student's name: ");
             string name = Console.ReadLine();
-            Schüler schüler = SchülerSuchen(name);
+            Student student = FindStudent(name);
 
-            if (schüler != null)
+            if (student != null)
             {
-                Console.Write("Geben Sie den Namen des Faches ein: ");
-                string fachName = Console.ReadLine();
-                schüler.FachHinzufügen(fachName);
+                Console.Write("Enter the subject name: ");
+                string subjectName = Console.ReadLine();
+                student.AddSubject(subjectName);
             }
             else
             {
-                Console.WriteLine("Schüler nicht gefunden.");
+                Console.WriteLine("Student not found.");
             }
         }
 
-        static void NoteHinzufügen()
+        static void AddGrade()
         {
-            Console.Write("Geben Sie den Namen des Schülers ein: ");
+            Console.Write("Enter the student's name: ");
             string name = Console.ReadLine();
-            Schüler schüler = SchülerSuchen(name);
+            Student student = FindStudent(name);
 
-            if (schüler != null)
+            if (student != null)
             {
-                Console.Write("Geben Sie den Namen des Faches ein: ");
-                string fachName = Console.ReadLine();
-                Console.Write("Geben Sie die Note ein (1-6): ");
-                if (int.TryParse(Console.ReadLine(), out int note))
+                Console.Write("Enter the subject name: ");
+                string subjectName = Console.ReadLine();
+                Console.Write("Enter the grade (1-6): ");
+                if (int.TryParse(Console.ReadLine(), out int grade))
                 {
-                    schüler.NoteHinzufügen(fachName, note);
+                    student.AddGrade(subjectName, grade);
                 }
                 else
                 {
-                    Console.WriteLine("Ungültige Eingabe. Bitte geben Sie eine Zahl zwischen 1 und 6 ein.");
+                    Console.WriteLine("Invalid input. Please enter a number between 1 and 6.");
                 }
             }
             else
             {
-                Console.WriteLine("Schüler nicht gefunden.");
+                Console.WriteLine("Student not found.");
             }
         }
 
-        static void NotenAnzeigen()
+        static void DisplayGrades()
         {
-            Console.Write("Geben Sie den Namen des Schülers ein: ");
+            Console.Write("Enter the student's name: ");
             string name = Console.ReadLine();
-            Schüler schüler = SchülerSuchen(name);
+            Student student = FindStudent(name);
 
-            if (schüler != null)
+            if (student != null)
             {
-                Console.Write("Geben Sie den Namen des Faches ein: ");
-                string fachName = Console.ReadLine();
-                schüler.NotenAnzeigen(fachName);
+                Console.Write("Enter the subject name: ");
+                string subjectName = Console.ReadLine();
+                student.DisplayGrades(subjectName);
             }
             else
             {
-                Console.WriteLine("Schüler nicht gefunden.");
+                Console.WriteLine("Student not found.");
             }
         }
 
-        static void DurchschnittsnoteAnzeigen()
+        static void DisplayAverageGrade()
         {
-            Console.Write("Geben Sie den Namen des Schülers ein: ");
+            Console.Write("Enter the student's name: ");
             string name = Console.ReadLine();
-            Schüler schüler = SchülerSuchen(name);
+            Student student = FindStudent(name);
 
-            if (schüler != null)
+            if (student != null)
             {
-                Console.Write("Geben Sie den Namen des Faches ein: ");
-                string fachName = Console.ReadLine();
-                schüler.DurchschnittsnoteAnzeigen(fachName);
+                Console.Write("Enter the subject name: ");
+                string subjectName = Console.ReadLine();
+                student.DisplayAverageGrade(subjectName);
             }
             else
             {
-                Console.WriteLine("Schüler nicht gefunden.");
+                Console.WriteLine("Student not found.");
             }
         }
 
-        static void GesamtdurchschnittAnzeigen()
+        static void DisplayOverallAverage()
         {
-            Console.Write("Geben Sie den Namen des Schülers ein: ");
+            Console.Write("Enter the student's name: ");
             string name = Console.ReadLine();
-            Schüler schüler = SchülerSuchen(name);
+            Student student = FindStudent(name);
 
-            if (schüler != null)
+            if (student != null)
             {
-                schüler.GesamtdurchschnittAnzeigen();
+                student.DisplayOverallAverage();
             }
             else
             {
-                Console.WriteLine("Schüler nicht gefunden.");
+                Console.WriteLine("Student not found.");
+            }
+        }
+
+        static void DisplayBestStudentInClass()
+        {
+            Console.Write("Enter the class name: ");
+            string className = Console.ReadLine();
+
+            var studentsInClass = studentList.Where(s => s.ClassName == className).ToList();
+            if (studentsInClass.Count > 0)
+            {
+                var bestStudent = studentsInClass.OrderByDescending(s => s.OverallAverage()).FirstOrDefault();
+                Console.WriteLine($"Best student in class '{className}': {bestStudent.Name} with an average of {bestStudent.OverallAverage():0.00}");
+            }
+            else
+            {
+                Console.WriteLine("No students found in the specified class.");
+            }
+        }
+
+        static void DisplayWorstStudentInClass()
+        {
+            Console.Write("Enter the class name: ");
+            string className = Console.ReadLine();
+
+            var studentsInClass = studentList.Where(s => s.ClassName == className).ToList();
+            if (studentsInClass.Count > 0)
+            {
+                var worstStudent = studentsInClass.OrderBy(s => s.OverallAverage()).FirstOrDefault();
+                Console.WriteLine($"Worst student in class '{className}': {worstStudent.Name} with an average of {worstStudent.OverallAverage():0.00}");
+            }
+            else
+            {
+                Console.WriteLine("No students found in the specified class.");
             }
         }
     }
 }
-
