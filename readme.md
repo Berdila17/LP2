@@ -54,8 +54,9 @@ Heute habe ich mit den Mini Projekt von Daten zu speichern und dann wieder zu la
 - [ ] Daten  abzuspeichern und zu laden im Projekt umsetzen
 - [ ] Klassenbester und Klassen schlechtester ermitteln
 
-      Heute hab ich mich mit den anderen Sachen beschäftigt da mir das Mini Projekt nicht gelungen ist und ich ein bisschen aggressiv deswegen wurde habe ich leider aufgegebn aber ich hab mein Code auf Englisch übersetzt und die Klassenbester und Klassen schlechtester Funktion hinzugefügt. Jetzt ist der ganze Code auf englisch von dern Eingabe bis zu der Ausgabe.
+Heute hab ich mich mit den anderen Sachen beschäftigt da mir das Mini Projekt nicht gelungen ist und ich ein bisschen aggressiv deswegen wurde habe ich leider aufgegebn aber ich hab mein Code auf Englisch übersetzt und die Klassenbester und Klassen schlechtester Funktion hinzugefügt. Jetzt ist der ganze Code auf englisch von dern Eingabe bis zu der Ausgabe.
 
+## 6.12.2024
 - [ ] System.Linq in ein Mini Projekt besser kennenlernen
 - [ ] Daten speichern Funktion implentieren ( da brauche ich Hilfe)
 - [ ] Daten laden Funktion implentieren (brauch ich auch Hilfe)
