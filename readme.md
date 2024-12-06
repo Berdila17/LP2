@@ -57,8 +57,16 @@ Heute habe ich mit den Mini Projekt von Daten zu speichern und dann wieder zu la
 Heute hab ich mich mit den anderen Sachen beschäftigt da mir das Mini Projekt nicht gelungen ist und ich ein bisschen aggressiv deswegen wurde habe ich leider aufgegebn aber ich hab mein Code auf Englisch übersetzt und die Klassenbester und Klassen schlechtester Funktion hinzugefügt. Jetzt ist der ganze Code auf englisch von dern Eingabe bis zu der Ausgabe.
 
 ## 6.12.2024
-- [ ] System.Linq in ein Mini Projekt besser kennenlernen
-- [ ] Daten speichern Funktion implentieren ( da brauche ich Hilfe)
+- [x] System.Linq in ein Mini Projekt besser kennenlernen
+- [x] Daten speichern Funktion implentieren ( da brauche ich Hilfe)
 - [ ] Daten laden Funktion implentieren (brauch ich auch Hilfe)
 - [ ] Etwas automatisch speichern Funktion (geht nur wenn die oberen 2 funktionieren)
-Könnten sie vielleicht mir ein Video zu den Daten schicken weil ich konnte kaum einer finden der mir Hilft leider.
+
+Heute habe ich ein Mini Projekt zu System.Linq gemacht das mir geholfen hat System.Linq besser kennenzulernen dazu hab ich Mithilfe von ChatGBT die Daten speichern Funktion hinzugefügt er hat mir geholfen ich hab ihm aber dann Natürlich auch gerfragt wie das geht und er es mir explizit erklären soll dazu hat er mir noch die Unterschiede zwischen der Datenbänke erklärt.
+
+## 13.12.2024
+
+- [ ] Kommentare zu den Code hinzufügen sodas es einer Person etwas erklären kann
+- [ ] AoC austesten
+- [ ] Daten laden Funktion implentieren 
+- [ ] Etwas automatisch speichern Funktion
