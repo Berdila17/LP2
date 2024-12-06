@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
+using System.Text.Json;
 
 namespace GradeManagement
 {
@@ -133,9 +135,12 @@ namespace GradeManagement
     class Program
     {
         static List<Student> studentList = new List<Student>();
+        static string dataFilePath = "students.json";
 
         static void Main(string[] args)
         {
+            LoadData(); // Daten beim Start laden
+
             bool running = true;
             while (running)
             {
@@ -181,6 +186,7 @@ namespace GradeManagement
                         break;
                     case "9":
                         running = false;
+                        SaveData(); // Daten beim Beenden speichern
                         Console.WriteLine("Program terminated.");
                         break;
                     default:
@@ -188,6 +194,46 @@ namespace GradeManagement
                         break;
                 }
             }
+        }
+
+        static void SaveData()
+        {
+            try
+            {
+                string jsonData = JsonSerializer.Serialize(studentList, new JsonSerializerOptions { WriteIndented = true });
+                File.WriteAllText(dataFilePath, jsonData);
+                Console.WriteLine("Daten wurden erfolgreich gespeichert.");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Fehler beim Speichern der Daten: " + ex.Message);
+            }
+        }
+
+        static void LoadData()
+        {
+            try
+            {
+                if (File.Exists(dataFilePath))
+                {
+                    string jsonData = File.ReadAllText(dataFilePath);
+                    studentList = JsonSerializer.Deserialize<List<Student>>(jsonData) ?? new List<Student>();
+                    Console.WriteLine("Daten wurden erfolgreich geladen.");
+                }
+                else
+                {
+                    Console.WriteLine("Keine gespeicherten Daten gefunden.");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Fehler beim Laden der Daten: " + ex.Message);
+            }
+        }
+
+        static Student FindStudent(string name)
+        {
+            return studentList.FirstOrDefault(s => s.Name == name);
         }
 
         static void AddStudent()
@@ -212,11 +258,6 @@ namespace GradeManagement
             {
                 Console.WriteLine("Error adding student: " + ex.Message);
             }
-        }
-
-        static Student FindStudent(string name)
-        {
-            return studentList.FirstOrDefault(s => s.Name == name);
         }
 
         static void AddSubject()
@@ -323,12 +364,12 @@ namespace GradeManagement
             var studentsInClass = studentList.Where(s => s.ClassName == className).ToList();
             if (studentsInClass.Count > 0)
             {
-                var bestStudent = studentsInClass.OrderByDescending(s => s.OverallAverage()).FirstOrDefault();
-                Console.WriteLine($"Best student in class '{className}': {bestStudent.Name} with an average of {bestStudent.OverallAverage():0.00}");
+                var bestStudent = studentsInClass.OrderByDescending(s => s.OverallAverage()).First();
+                Console.WriteLine($"Best student in class '{className}': {bestStudent.Name} (Overall Average: {bestStudent.OverallAverage():0.00})");
             }
             else
             {
-                Console.WriteLine("No students found in the specified class.");
+                Console.WriteLine("No students found in this class.");
             }
         }
 
@@ -340,12 +381,12 @@ namespace GradeManagement
             var studentsInClass = studentList.Where(s => s.ClassName == className).ToList();
             if (studentsInClass.Count > 0)
             {
-                var worstStudent = studentsInClass.OrderBy(s => s.OverallAverage()).FirstOrDefault();
-                Console.WriteLine($"Worst student in class '{className}': {worstStudent.Name} with an average of {worstStudent.OverallAverage():0.00}");
+                var worstStudent = studentsInClass.OrderBy(s => s.OverallAverage()).First();
+                Console.WriteLine($"Worst student in class '{className}': {worstStudent.Name} (Overall Average: {worstStudent.OverallAverage():0.00})");
             }
             else
             {
-                Console.WriteLine("No students found in the specified class.");
+                Console.WriteLine("No students found in this class.");
             }
         }
     }
