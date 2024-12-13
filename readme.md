@@ -66,7 +66,13 @@ Heute habe ich ein Mini Projekt zu System.Linq gemacht das mir geholfen hat Syst
 
 ## 13.12.2024
 
-- [ ] Kommentare zu den Code hinzufügen sodas es einer Person etwas erklären kann
-- [ ] AoC austesten
-- [ ] Daten laden Funktion implentieren 
+- [x] Kommentare zu den Code hinzufügen sodas es einer Person etwas erklären kann
+- [x] AoC austesten
+- [x] Daten laden Funktion implentieren 
 - [ ] Etwas automatisch speichern Funktion
+
+Heute habe ich Kommentare zu meinen Code hinzugeüft den es erklärt um es übersichtlicher zu machen und verständlicher.Die Daten zu laden Funktion ist auch implentiert. AoC war das Highlight weil ich das Rätsel nicht lösen konnte aber ich merke das es dazu bringt mein Kopf selbständig zu überlegen was eine sehr gute Übung ist.
+
+## 20.12.2024
+- [ ] Daten autmoatisch speichern Funktion
+- [ ] Schüler aus Datenbank löschen
