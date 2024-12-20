@@ -76,3 +76,9 @@ Heute habe ich Kommentare zu meinen Code hinzugeüft den es erklärt um es über
 ## 20.12.2024
 - [ ] Daten autmoatisch speichern Funktion
 - [ ] Schüler aus Datenbank löschen
+
+## fertiges Projekt
+![Screenshot 2024-12-20 093950](https://github.com/user-attachments/assets/9cbb4da1-9a0e-4cec-8ed2-95d2bbc39b9f)
+Dieses Projekt (Notenverwaltungssystem) kann Noten, Fächer, Schüler hinzufügen und diese dann dementsprechend verwalten zum Beispiel in einer Klasse der Bester zu zeigen oder die Durschnitte zu berechnen. Daten speichern geht auch.
+
+## Reflexion
