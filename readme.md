@@ -82,3 +82,8 @@ Heute habe ich Kommentare zu meinen Code hinzugeüft den es erklärt um es über
 Dieses Projekt (Notenverwaltungssystem) kann Noten, Fächer, Schüler hinzufügen und diese dann dementsprechend verwalten zum Beispiel in einer Klasse der Bester zu zeigen oder die Durschnitte zu berechnen. Daten speichern geht auch.
 
 ## Reflexion
+
+Das Notenverwaltungssystem ist eine gute Grundlage, um Schüler, Fächer und Noten zu verwalten. Besonders gut gelungen sind die klare Struktur des Codes, das Speichern der Daten in einer Datei und die einfache Bedienung über ein Menü. Die wichtigsten Funktionen wie das Hinzufügen von Schülern und Noten sowie die Berechnung von Durchschnittsnoten funktionieren zuverlässig.
+Es gibt aber auch Schwächen. Zum Beispiel werden falsche Eingaben nicht immer erkannt, und doppelte Einträge werden nicht geprüft. Außerdem ist das System bei vielen Daten etwas unflexibel, da alles einzeln eingegeben werden muss. Eine Funktion zum Importieren von Daten oder eine bessere Oberfläche mit Buttons und Fenstern könnte das Programm leichter nutzbar machen.
+Insgesamt ist das System aber ein guter Anfang und kann in Zukunft noch verbessert und erweitert werden.
+In dieser Lernperiode war ich auch zu dem viel disziplinierter und ich freue mich schon auf die nächste Lernperiode um besser zu werdcen.
